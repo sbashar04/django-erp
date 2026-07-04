@@ -114,12 +114,12 @@
 <div class="layout">
     <aside class="sidebar">
         <h2>Django ERP</h2>
-        <a href="#">Dashboard</a>
-        <a href="#">Inventory</a>
-        <a href="#">Sales</a>
-        <a href="#">Purchases</a>
-        <a href="#">Accounts</a>
-        <a href="#">Reports</a>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'inventory' %}">Inventory</a>
+        <a href="/sales">Sales</a>
+        <a href="/purchases">Purchases</a>
+        <a href="/accounts">Accounts</a>
+        <a href="/reports">Reports</a>
     </aside>
 
     <main class="main">
