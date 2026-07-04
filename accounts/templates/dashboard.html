@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERP Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111827;
+            color: white;
+            padding: 24px;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 30px;
+            font-size: 22px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 12px 0;
+        }
+
+        .sidebar a:hover {
+            color: #ffffff;
+        }
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 20px 24px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        .card strong {
+            font-size: 28px;
+            color: #111827;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <h2>Django ERP</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Inventory</a>
+        <a href="#">Sales</a>
+        <a href="#">Purchases</a>
+        <a href="#">Accounts</a>
+        <a href="#">Reports</a>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome, {{ request.user.get_full_name|default:request.user.username }}</p>
+            </div>
+
+            <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Sales</h3>
+                <strong>৳0</strong>
+            </div>
+
+            <div class="card">
+                <h3>Total Purchase</h3>
+                <strong>৳0</strong>
+            </div>
+
+            <div class="card">
+                <h3>Total Products</h3>
+                <strong>0</strong>
+            </div>
+
+            <div class="card">
+                <h3>Low Stock</h3>
+                <strong>0</strong>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
